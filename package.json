@@ -1,0 +1,19 @@
+{
+  "name": "javascript-calc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jknights2000/JavaScript-Calc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jknights2000/JavaScript-Calc/issues"
+  },
+  "homepage": "https://github.com/jknights2000/JavaScript-Calc#readme"
+}
