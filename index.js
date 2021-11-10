@@ -4,18 +4,24 @@ calc();
 
 function welcome(){
     console.log('welcome to calculator!');
+    console.log('======================');
+    
 }
+
+
 function AskInput(message){
     const readline = require("readline-sync");
-    while(true)
-    {
-    console.log(message);
-    const maybeblank = readline.prompt();
-    if(maybeblank !== ""){
-        return maybeblank;
-    }
-    } 
+    
+    do{
+        console.log(message);
+        const maybeblank = readline.prompt();
+        if(maybeblank !== ""){
+            return maybeblank;
+        }
+    } while(true)
 }
+
+
 function AskNum(message){
         let maybenumber = +AskInput(message);
     
