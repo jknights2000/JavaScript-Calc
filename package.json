@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jknights2000/JavaScript-Calc/issues"
   },
-  "homepage": "https://github.com/jknights2000/JavaScript-Calc#readme"
+  "homepage": "https://github.com/jknights2000/JavaScript-Calc#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
