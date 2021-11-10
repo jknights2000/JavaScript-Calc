@@ -1,18 +1,40 @@
-console.log('welcome to calculator!');
+welcome();
+calc();
 
-const readline = require("readline-sync");
-console.log('operator:');
-const op = readline.prompt();
 
-console.log(`number of numbers to ${op}:`);
-const amount = readline.prompt();
+function welcome(){
+    console.log('welcome to calculator!');
+}
+function AskInput(message){
+    const readline = require("readline-sync");
+    while(true)
+    {
+    console.log(message);
+    const maybeblank = readline.prompt();
+    if(maybeblank !== ""){
+        return maybeblank;
+    }
+    } 
+}
+function AskNum(message){
+        let maybenumber = +AskInput(message);
+    
+        
+    while(isNaN(maybenumber)){
+        maybenumber = +AskInput(message);
+    }
+    return maybenumber;
+}
+function calc(){
+
+const op = AskInput('operator:');
+const amount = AskNum(`number of numbers to ${op}:`);
 let arr = new Array(amount);
 
 for(let i = 0; i < amount;i++){
     let counter = i + 1;
-    console.log(`Enter Number ${counter}:`);
-    let number = readline.prompt();
-    arr[i] = number;
+    let number = AskNum(`Enter Number ${counter}:`);
+    arr[i] = +number;
 }
 
 let result = 0;
@@ -31,7 +53,7 @@ for(let i = 0; i < amount;i++){
             
             break;
         case "+":
-            result = result + parseInt(arr[i]);
+            result = result + arr[i];
             break;
         case "/":
             if(result==0)
@@ -57,6 +79,7 @@ for(let i = 0; i < amount;i++){
     }
 }
 console.log(`Answer = ${result}`);
+}
 /*
 if("*" == op){
     const result = number1 * number2;
