@@ -37,7 +37,6 @@ function doCalc(result,op,arr){
             break;
         case "/":
             const noZeros = arr.filter(nums => nums != 0);
-            console.log(noZeros);
             result = arr.reduce(function(accumlator,currentvalue){
                 if(accumlator == 0){
                     return currentvalue;
