@@ -1,91 +1,56 @@
+
+const ARITHMETIC_MODE = '1';
+const VOWEL_COUNTING_MODE = '2';
+const EXIT_MODE = '3';
 welcome();
-calc();
+
 
 
 function welcome(){
+    const add = require('./arithmetic');
+    const word = require('./vowelCounting');
     console.log('welcome to calculator!');
     console.log('======================');
     
-}
-
-
-function AskInput(message){
-    const readline = require("readline-sync");
-    
-    do{
-        console.log(message);
-        const maybeblank = readline.prompt();
-        if(maybeblank !== ""){
-            return maybeblank;
+    while (true) {
+        const calculationMode = getClacMode();
+        if (calculationMode === ARITHMETIC_MODE) {
+            add.calc();
+        } else if (calculationMode === VOWEL_COUNTING_MODE) {
+            word.wordCalc();
+        }else if(calculationMode == EXIT_MODE){
+            const answer = getExit();
+            if(answer === "Y")
+            {
+                return;
+            }
+        }else{
+            console.log(`${calculationMode} is a Invalid Input`)
         }
-    } while(true)
-}
-
-
-function AskNum(message){
-        let maybenumber = +AskInput(message);
-    
-        
-    while(isNaN(maybenumber)){
-        maybenumber = +AskInput(message);
-    }
-    return maybenumber;
-}
-function calc(){
-
-const op = AskInput('operator:');
-const amount = AskNum(`number of numbers to ${op}:`);
-let arr = new Array(amount);
-
-for(let i = 0; i < amount;i++){
-    let counter = i + 1;
-    let number = AskNum(`Enter Number ${counter}:`);
-    arr[i] = +number;
-}
-
-let result = 0;
-
-for(let i = 0; i < amount;i++){
-
-    switch(op){
-        case "*":
-            if(result==0)
-            {
-                result = arr[i];
-            }else
-            {
-                result = result * arr[i];
-            }
-            
-            break;
-        case "+":
-            result = result + arr[i];
-            break;
-        case "/":
-            if(result==0)
-            {
-                result = arr[i];
-            }else
-            {
-                result = result / arr[i];
-            }
-            break;
-        case "-":
-            if(result==0)
-            {
-                result = arr[i];
-            }else
-            {
-                result = result - arr[i];
-            }
-            break;
-        default:
-            console.log(`invalid operator`);
-            break;
     }
 }
-console.log(`Answer = ${result}`);
+
+
+
+function getClacMode(){
+    const input = require('./userInput');
+    return input.AskInput(`\
+    ${ARITHMETIC_MODE})Arithmatic 
+    ${VOWEL_COUNTING_MODE}) Vowel Counting
+    ${EXIT_MODE}) EXIT`)
+    }
+function getExit()
+{
+    const input = require('./userInput');
+    let answer = "";
+  
+    while(answer != "Y" && answer != "N"){
+    answer = input.AskInput("Exit:y/n");
+    answer = answer.toUpperCase();
+    }
+    return answer;
 }
+
 /*
 if("*" == op){
     const result = number1 * number2;
