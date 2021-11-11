@@ -25,7 +25,7 @@ function welcome(){
                 return;
             }
         }else{
-            console.log(`${calculationMode} is a Invalid Input`)
+            console.error(`${calculationMode} is a Invalid Mode Input`)
         }
     }
 }

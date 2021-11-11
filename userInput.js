@@ -20,3 +20,11 @@ exports.AskInput=function(message){
         }
     } while(true)
 }
+exports.GetOp=function(){
+    const input = require('./userInput');
+    let opinput ="";
+    do{
+        opinput = input.AskInput('operator:');
+    }while(opinput !="*"&&opinput !="/"&&opinput !="-"&&opinput !="+")
+    return opinput;
+}
