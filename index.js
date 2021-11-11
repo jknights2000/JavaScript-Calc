@@ -1,7 +1,8 @@
 
 const ARITHMETIC_MODE = '1';
 const VOWEL_COUNTING_MODE = '2';
-const EXIT_MODE = '3';
+const FACTORISE_Mode = '3';
+const EXIT_MODE = '4';
 welcome();
 
 
@@ -9,6 +10,8 @@ welcome();
 function welcome(){
     const add = require('./arithmetic');
     const word = require('./vowelCounting');
+    const input = require('./userInput');
+
     console.log('welcome to calculator!');
     console.log('======================');
     
@@ -24,7 +27,11 @@ function welcome(){
             {
                 return;
             }
-        }else{
+        }else if(calculationMode == FACTORISE_Mode){
+            let number = input.AskNum("enter number:")
+            console.log(`Answer: ${add.factoral(number)}`);
+        }
+            else{
             console.error(`${calculationMode} is a Invalid Mode Input`)
         }
     }
@@ -37,6 +44,7 @@ function getClacMode(){
     return input.AskInput(`\
     ${ARITHMETIC_MODE})Arithmatic 
     ${VOWEL_COUNTING_MODE}) Vowel Counting
+    ${FACTORISE_Mode}) Factorise
     ${EXIT_MODE}) EXIT`)
     }
 function getExit()

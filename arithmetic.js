@@ -1,3 +1,14 @@
+exports.factoral = function(number){
+    const add = require('./arithmetic');
+    if(number < 0)
+    {
+        return -1;
+    }else if(number==0){
+        return 1
+    }else{
+        return (number * add.factoral(number-1));
+    }
+}
 exports.calc = function(){
         const input = require('./userInput');
     const op = input.GetOp();
